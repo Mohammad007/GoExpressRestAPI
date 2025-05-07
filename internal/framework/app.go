@@ -22,6 +22,10 @@ type Response struct {
     status int
 }
 
+func NewResponse(w http.ResponseWriter) *Response {
+    return &Response{w: w, status: http.StatusOK}
+}
+
 type Router struct {
     app    *App
     prefix string

@@ -2,6 +2,8 @@
 
 A lightweight, Express.js-inspired REST API framework built in Go, designed to feel familiar to Node.js developers. It combines the simplicity of Express.js with the performance and type safety of Go, supporting multiple databases and modern API development practices.
 
+> **Important Note**: This project uses SQLite as its default database, which requires CGO to be enabled during compilation. If you encounter errors about CGO being disabled, please refer to the [Database Configuration Guide](docs/database_guide.md) for solutions.
+
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Features](#features)
