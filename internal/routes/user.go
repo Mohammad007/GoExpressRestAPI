@@ -1,4 +1,3 @@
-// internal/routes/user.go
 package routes
 
 import (
@@ -6,7 +5,6 @@ import (
     "github.com/Mohammad007/GoExpressRestAPI/internal/framework"
 )
 
-// RegisterUserRoutes registers user-related routes
 func RegisterUserRoutes(app *framework.App) {
     router := app.Route("/users")
     router.

@@ -276,7 +276,6 @@ Define controllers in `controllers/user.go`:
 package controllers
 
 import (
-    "github.com/go-playground/validator/v10"
     "github.com/gorilla/mux"
     "github.com/Mohammad007/GoExpressRestAPI/internal/framework"
     "github.com/Mohammad007/GoExpressRestAPI/internal/models"

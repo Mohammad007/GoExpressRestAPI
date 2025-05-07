@@ -1,23 +1,19 @@
 package middleware
 
 import (
-	"encoding/json"
-	"net/http"
+    "github.com/Mohammad007/GoExpressRestAPI/internal/framework"
+    "github.com/Mohammad007/GoExpressRestAPI/internal/utils"
+    "net/http"
 )
 
-type ErrorResponse struct {
-	Error string `json:"error"`
-}
-
-func ErrorHandler(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		defer func() {
-			if err := recover(); err != nil {
-				w.Header().Set("Content-Type", "application/json")
-				w.WriteHeader(http.StatusInternalServerError)
-				json.NewEncoder(w).Encode(ErrorResponse{Error: "Internal Server Error"})
-			}
-		}()
-		next.ServeHTTP(w, r)
-	})
+func ErrorHandler(next http.HandlerFunc) http.HandlerFunc {
+    return func(w http.ResponseWriter, r *http.Request) {
+        res := &framework.Response{w: w, status: http.StatusOK}
+        defer func() {
+            if err := recover(); err != nil {
+                res.Error(http.StatusInternalServerError, "Internal server error")
+            }
+        }()
+        next(w, r)
+    }
 }
